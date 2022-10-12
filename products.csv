@@ -1,0 +1,5 @@
+id,name,price,category,rating,discount,available
+1,Eggs,1.56,Pantry,3.4,2.8,true
+2,Milk,1.98,Dairy,4.3,10.00,false
+3,Lemonade,0.50,Beverages,3.7,2.5,true
+4,Bananas,1.67,Fruit,2.7,1.00,false
