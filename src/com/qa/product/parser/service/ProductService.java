@@ -4,6 +4,7 @@ import java.text.DecimalFormat;
 import java.util.ArrayList;
 import com.qa.product.parser.bean.Product;
 import com.qa.product.parser.repository.ProductRepository;
+import com.qa.products.parser.exceptions.ProductNotFoundException;
 
 public class ProductService {
 	
@@ -22,12 +23,13 @@ public class ProductService {
 		System.out.println("isAvailable is: " + p.isAvailable());
 	}
 	
-	public Product getProductById(int id) {
+	public Product getProductById(int id) throws ProductNotFoundException {
 		Product p = new Product();
 		for(Product searchedProduct : products) {
 			if (searchedProduct.getId() == id) {
 				p = searchedProduct;
 			}
+		if (p == null) throw new ProductNotFoundException("That id cannot be found");
 		}
 		return p;
 	}

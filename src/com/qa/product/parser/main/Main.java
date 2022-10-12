@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import com.qa.product.parser.bean.*;
 import com.qa.product.parser.repository.ProductRepository;
 import com.qa.product.parser.service.ProductService;
+import com.qa.products.parser.exceptions.ProductNotFoundException;
 
 public class Main {
 
@@ -20,10 +21,15 @@ public class Main {
 		}
 
 		//get product by id
-		Product pByID = service.getProductById(1);
-		System.out.print("The product with the id of 1 is:");
-		System.out.println(pByID);
-		System.out.println();
+		Product pByID;
+		try {
+			pByID = service.getProductById(1);
+			System.out.print("The product with the id of 1 is:");
+			System.out.println(pByID);
+			System.out.println();
+		} catch (ProductNotFoundException e) {
+			e.printStackTrace();
+		}
 
 		//get cheapest item
 		Product pCheapest = service.getCheapestProduct();
